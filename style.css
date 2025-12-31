@@ -19,27 +19,49 @@
 
 /* CAPA */
 .capa {
-    height: 80vh;
-    background: linear-gradient(
-        rgba(0,0,0,0.4),
-        rgba(0,0,0,0.4)
-    ),
-    url("https://via.placeholder.com/1200x600?text=Bombocado");
-    background-size: cover;
-    background-position: center;
+    position: relative;
+    height: 100vh; /* ocupa tela inteira */
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.capa-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* mantém proporção e corta excesso */
+    z-index: 0;
+}
+
+.capa::before {
+    content: "";
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.4); /* gradiente escuro sobre a imagem */
+    z-index: 0;
 }
 
 .capa-texto {
+    position: relative;
+    z-index: 1;
     color: white;
-    text-align: center;
 }
 
 .capa-texto h1 {
-    font-size: 42px;
-    margin-bottom: 10px;
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+.capa-texto p {
+    font-size: 24px;
 }
 
 /* CARROSSEL */
@@ -49,17 +71,12 @@
     text-align: center;
 }
 
-.carrossel {
-    position: relative;
-    max-width: 1200px;
-    margin: 40px auto;
-    overflow: hidden;
-}
-
 .carrossel-container {
     display: flex;
     gap: 20px;
-    transition: transform 0.5s ease;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
 }
 
 /* CARDS */
@@ -68,13 +85,13 @@
     border-radius: 15px;
     padding: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    flex: 0 0 23%; /* 4 cards por vez no desktop */
+    flex: 0 0 23%;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     overflow: hidden;
-    max-width: 250px; /* largura máxima do card */
+    max-width: 250px;
     margin: 0 auto;
 }
 
@@ -92,7 +109,38 @@
     color: #4b1e1e;
 }
 
-/* SETAS */
+/* BOTÃO PEDIR */
+.pedido-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #e09b8d;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.pedido-btn:hover {
+    background-color: #d87c6c;
+    transform: scale(1.05);
+}
+
+/* RESPONSIVO */
+@media (max-width: 1200px) {
+    .card { flex: 0 0 32%; max-width: 200px; }
+}
+@media (max-width: 900px) {
+    .card { flex: 0 0 48%; max-width: 180px; }
+}
+@media (max-width: 600px) {
+    .card { flex: 0 0 90%; max-width: 250px; }
+}
+
+/* SETAS (opcional, se for usar carrossel com navegação) */
 .seta {
     position: absolute;
     top: 45%;
@@ -112,17 +160,6 @@
 
 .direita {
     right: 10px;
-}
-
-/* RESPONSIVO */
-@media (max-width: 1200px) {
-    .card { flex: 0 0 32%; max-width: 200px; } /* 3 cards */
-}
-@media (max-width: 900px) {
-    .card { flex: 0 0 48%; max-width: 180px; } /* 2 cards */
-}
-@media (max-width: 600px) {
-    .card { flex: 0 0 90%; max-width: 250px; } /* 1 card */
 }
 
 /* RODAPÉ */
