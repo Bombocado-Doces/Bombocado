@@ -34,6 +34,10 @@ function voltar() {
     if (index < 0) index = totalCards - visibleCards;
     atualizar();
 }
+function fazerPedido(produto, preco) {
+    alert(`Você pediu: ${produto} - R$ ${preco.toFixed(2)}`);
+}
+
 
 // automático
 let intervalo = setInterval(avancar, 4000);
