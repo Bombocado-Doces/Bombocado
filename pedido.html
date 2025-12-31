@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Pedido - Bombocado</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- MENU -->
+<header class="menu">
+    <div class="logo">🍫 Bombocado</div>
+</header>
+
+<!-- TÍTULO DA PÁGINA -->
+<section class="pedido-section">
+    <h1>Monte seu pedido 📝</h1>
+</section>
+
+<!-- LISTA DE PRODUTOS -->
+<section class="carrossel-section">
+    <div class="carrossel-container" id="carrossel">
+
+        <!-- Exemplo de card -->
+        <div class="card">
+            <img src="images/morango.jpg" alt="Copo da Felicidade Morango">
+            <h3>Copo da Felicidade</h3>
+            <p>Morango</p>
+            <strong>R$ 15,00</strong>
+            <button class="pedido-btn" onclick="adicionarPedido('Copo da Felicidade - Morango', 15)">Adicionar</button>
+        </div>
+
+        <!-- Repita para todos os produtos... -->
+    </div>
+</section>
+
+<!-- CARRINHO DE PEDIDO -->
+<section class="carrinho-section">
+    <h2>Seu pedido 🛒</h2>
+    <ul id="carrinho"></ul>
+    <p><strong>Total: R$ <span id="total">0,00</span></strong></p>
+    <button class="pedido-btn" id="finalizar-pedido">Finalizar no WhatsApp</button>
+</section>
+
+<script src="pedido.js"></script>
+</body>
+</html>
