@@ -207,3 +207,27 @@ body > *:not(.rodape) {
 .pedido-form-section button {
     margin-top: 10px;
 }
+
+.pedido-section, .carrinho-section {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #fff5e6;
+    margin: 20px;
+    border-radius: 15px;
+}
+
+#carrinho {
+    list-style: none;
+    margin: 20px 0;
+    padding: 0;
+}
+
+#carrinho li {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+#finalizar-pedido {
+    margin-top: 20px;
+}
+
