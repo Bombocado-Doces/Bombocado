@@ -7,46 +7,50 @@
 </head>
 <body>
 
-<header>
-    <h1>🍫 Bombocado 🍓</h1>
-    <p>Doces feitos com carinho</p>
+<!-- MENU -->
+<header class="menu">
+    <div class="logo">🍫 Bombocado</div>
 </header>
 
-<section class="produtos">
-    <div class="doce">
-        <h2>Copo da Felicidade</h2>
-        <p>Uma explosão de sabores 😍</p>
-        <span>R$ 15,00</span>
-    </div>
-
-    <div class="doce">
-        <h2>Pavê</h2>
-        <p>Clássico e irresistível 🍪</p>
-        <span>R$ 12,00</span>
+<!-- CAPA -->
+<section class="capa">
+    <div class="capa-texto">
+        <h1>Doces que abraçam o coração</h1>
+        <p>Copo da Felicidade & Pavê feitos com carinho 💕</p>
     </div>
 </section>
 
-<section class="pedido">
-    <h2>📋 Fazer Pedido</h2>
+<!-- CARROSSEL -->
+<section class="carrossel-section">
+    <h2>Nossos Queridinhos 🍓</h2>
 
-    <form action="https://wa.me/5500000000000" method="get" target="_blank">
-        <input type="text" name="text" placeholder="Seu nome" required>
+    <div class="carrossel">
+        <button class="seta esquerda" onclick="voltar()">❮</button>
 
-        <select name="text" required>
-            <option value="">Escolha o doce</option>
-            <option value="Quero um Copo da Felicidade">Copo da Felicidade</option>
-            <option value="Quero um Pavê">Pavê</option>
-        </select>
+        <div class="carrossel-container" id="carrossel">
+            <div class="card">
+                <img src="https://via.placeholder.com/300x300?text=Copo+da+Felicidade">
+                <h3>Copo da Felicidade</h3>
+                <p>R$ 15,00</p>
+            </div>
 
-        <input type="number" name="text" placeholder="Quantidade" required>
+            <div class="card">
+                <img src="https://via.placeholder.com/300x300?text=Pavê">
+                <h3>Pavê</h3>
+                <p>R$ 12,00</p>
+            </div>
+        </div>
 
-        <button type="submit">Enviar pedido 💬</button>
-    </form>
+        <button class="seta direita" onclick="avancar()">❯</button>
+    </div>
 </section>
 
-<footer>
+<!-- RODAPÉ -->
+<footer class="rodape">
     <p>Bombocado © 2025</p>
+    <p>Feito com 💖 e muito chocolate</p>
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
