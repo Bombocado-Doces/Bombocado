@@ -62,17 +62,26 @@
     transition: transform 0.5s ease;
 }
 
+/* CARDS */
 .card {
     background: white;
     border-radius: 15px;
-    padding: 15px;
+    padding: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    min-width: 250px;
+    flex: 0 0 25%; /* 4 cards por vez no desktop */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    overflow: hidden; /* importante para cortar imagens */
 }
 
 .card img {
     width: 100%;
+    aspect-ratio: 1 / 1; /* força quadrado */
+    object-fit: cover;   /* corta excesso mantendo proporção */
     border-radius: 10px;
+    display: block;
 }
 
 .card h3 {
@@ -103,52 +112,8 @@
 }
 
 /* RESPONSIVO */
-@media (max-width: 900px) {
-    .card {
-        min-width: 220px;
-    }
-}
-
-@media (max-width: 600px) {
-    .card {
-        min-width: 180px;
-    }
-}
-
-/* RODAPÉ */
-.rodape {
-    background-color: #4b1e1e;
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
-/* CARDS */
-.card {
-    background: white;
-    border-radius: 15px;
-    padding: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    flex: 0 0 25%; /* padrão: 4 cards por vez */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.card img {
-    width: 100%;
-    height: 200px; /* altura fixa */
-    object-fit: cover; /* mantém proporção e corta o excesso */
-    border-radius: 10px;
-}
-
-/* RESPONSIVO */
 @media (max-width: 1200px) {
     .card { flex: 0 0 33.33%; } /* 3 cards por vez */
 }
 @media (max-width: 900px) {
-    .card { flex: 0 0 50%; } /* 2 cards por vez */
-}
-@media (max-width: 600px) {
-    .card { flex: 0 0 100%; } /* 1 card por vez */
-}
+    .card { flex: 0 0 50%; } /* 2 cards*
