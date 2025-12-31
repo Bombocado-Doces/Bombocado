@@ -46,3 +46,43 @@ let intervalo = setInterval(avancar, 4000);
 window.addEventListener("resize", () => {
     atualizar();
 });
+
+// Seleciona todos os botões "Pedir"
+const botoesPedir = document.querySelectorAll('.pedido-btn');
+
+botoesPedir.forEach(botao => {
+    botao.addEventListener('click', () => {
+        const card = botao.closest('.card');
+        const nomeProduto = card.querySelector('h3').innerText + " - " + card.querySelector('p').innerText;
+        
+        // Preenche o campo do formulário com o produto
+        document.getElementById('produto').value = nomeProduto;
+
+        // Exibe a seção do formulário
+        document.getElementById('pedido-form-section').style.display = 'block';
+
+        // Rola para o formulário
+        document.getElementById('pedido-form-section').scrollIntoView({ behavior: 'smooth' });
+    });
+});
+
+// Envio do formulário
+document.getElementById('pedido-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    
+    const produto = document.getElementById('produto').value;
+    const nome = document.getElementById('nome').value;
+    const telefone = document.getElementById('telefone').value;
+    const observacoes = document.getElementById('observacoes').value;
+
+    const mensagem = `Oi! Meu nome é ${nome}. Quero pedir: ${produto}. Observações: ${observacoes}`;
+    const whatsappURL = `https://wa.me/55${telefone}?text=${encodeURIComponent(mensagem)}`;
+
+    // Abre o WhatsApp
+    window.open(whatsappURL, '_blank');
+
+    // Opcional: resetar formulário
+    document.getElementById('pedido-form').reset();
+    document.getElementById('pedido-form-section').style.display = 'none';
+});
+
