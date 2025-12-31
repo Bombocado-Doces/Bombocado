@@ -5,12 +5,17 @@
     font-family: 'Arial', sans-serif;
 }
 
+body, html {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 /* MENU */
 .menu {
     background-color: #4b1e1e;
     padding: 20px;
 }
-
 .logo {
     color: white;
     font-size: 24px;
@@ -19,49 +24,20 @@
 
 /* CAPA */
 .capa {
-    position: relative;
-    height: 100vh; /* ocupa tela inteira */
+    height: 80vh;
+    background-size: cover;
+    background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    overflow: hidden;
 }
-
-.capa-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* mantém proporção e corta excesso */
-    z-index: 0;
-}
-
-.capa::before {
-    content: "";
-    position: absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background: rgba(0,0,0,0.4); /* gradiente escuro sobre a imagem */
-    z-index: 0;
-}
-
 .capa-texto {
-    position: relative;
-    z-index: 1;
     color: white;
+    text-align: center;
 }
-
 .capa-texto h1 {
-    font-size: 60px;
-    margin-bottom: 20px;
-}
-
-.capa-texto p {
-    font-size: 24px;
+    font-size: 42px;
+    margin-bottom: 10px;
 }
 
 /* CARROSSEL */
@@ -69,14 +45,13 @@
     padding: 60px 20px;
     background-color: #fff5e6;
     text-align: center;
+    position: relative;
 }
-
 .carrossel-container {
     display: flex;
     gap: 20px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    padding-bottom: 10px;
+    overflow: hidden;
+    transition: transform 0.5s ease;
 }
 
 /* CARDS */
@@ -92,55 +67,33 @@
     text-align: center;
     overflow: hidden;
     max-width: 250px;
-    margin: 0 auto;
+    margin: 0 auto 20px;
 }
-
 .card img {
     width: 100%;
     max-width: 220px;
-    aspect-ratio: 1 / 1; /* força quadrado */
-    object-fit: cover;   /* corta excesso mantendo proporção */
+    aspect-ratio: 1/1;
+    object-fit: cover;
     border-radius: 10px;
-    display: block;
 }
-
 .card h3 {
     margin-top: 10px;
     color: #4b1e1e;
 }
-
-/* BOTÃO PEDIR */
 .pedido-btn {
     margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #e09b8d;
+    background-color: #4b1e1e;
     color: white;
-    font-weight: bold;
     border: none;
-    border-radius: 25px;
+    padding: 8px 15px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
 }
-
 .pedido-btn:hover {
-    background-color: #d87c6c;
-    transform: scale(1.05);
+    background-color: #6a2c2c;
 }
 
-/* RESPONSIVO */
-@media (max-width: 1200px) {
-    .card { flex: 0 0 32%; max-width: 200px; }
-}
-@media (max-width: 900px) {
-    .card { flex: 0 0 48%; max-width: 180px; }
-}
-@media (max-width: 600px) {
-    .card { flex: 0 0 90%; max-width: 250px; }
-}
-
-/* SETAS (opcional, se for usar carrossel com navegação) */
+/* SETAS CARROSSEL */
 .seta {
     position: absolute;
     top: 45%;
@@ -153,81 +106,44 @@
     border-radius: 50%;
     z-index: 10;
 }
+.esquerda { left: 10px; }
+.direita { right: 10px; }
 
-.esquerda {
-    left: 10px;
-}
-
-.direita {
-    right: 10px;
-}
-
-/* RODAPÉ */
-body, html {
-    min-height: 100%;
+/* PEDIDO */
+.pedido-section {
+    padding: 40px 20px;
+    background-color: #fff5e6;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
-
-body > *:not(.rodape) {
-    flex: 1;
+.produtos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
+.carrinho-container {
+    margin-top: 30px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+#carrinho { list-style: none; margin-bottom: 10px; }
 
+/* RESPONSIVO */
+@media (max-width: 1200px) { .card { flex: 0 0 32%; max-width: 200px; } }
+@media (max-width: 900px) { .card { flex: 0 0 48%; max-width: 180px; } }
+@media (max-width: 600px) { .card { flex: 0 0 90%; max-width: 250px; } }
+
+/* RODAPÉ */
 .rodape {
     background-color: #4b1e1e;
     color: white;
     text-align: center;
     padding: 20px;
+    margin-top: auto;
 }
-
-.pedido-form-section {
-    background-color: #fff5e6;
-    padding: 40px 20px;
-    text-align: center;
-    border-radius: 15px;
-    max-width: 500px;
-    margin: 40px auto;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.pedido-form-section h2 {
-    margin-bottom: 20px;
-    color: #4b1e1e;
-}
-
-.pedido-form-section input,
-.pedido-form-section textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-}
-
-.pedido-form-section button {
-    margin-top: 10px;
-}
-
-.pedido-section, .carrinho-section {
-    text-align: center;
-    padding: 40px 20px;
-    background-color: #fff5e6;
-    margin: 20px;
-    border-radius: 15px;
-}
-
-#carrinho {
-    list-style: none;
-    margin: 20px 0;
-    padding: 0;
-}
-
-#carrinho li {
-    margin: 10px 0;
-    font-size: 18px;
-}
-
-#finalizar-pedido {
-    margin-top: 20px;
-}
-
