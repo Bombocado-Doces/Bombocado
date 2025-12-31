@@ -1,35 +1,44 @@
 const carrossel = document.getElementById("carrossel");
-const cards = document.querySelectorAll(".card");
-
 let index = 0;
-let cardsPorTela = calcularCards();
 
-function calcularCards() {
-    if (window.innerWidth < 600) return 2;
-    if (window.innerWidth < 900) return 3;
-    return 4;
+// calcula quantos cards cabem na tela
+function cardsPorTela() {
+    const card = carrossel.querySelector(".card");
+    const carrosselWidth = carrossel.parentElement.offsetWidth;
+    return Math.floor(carrosselWidth / card.offsetWidth);
 }
 
-function avancar() {
-    index += cardsPorTela;
-    if (index >= cards.length) index = 0;
-    atualizar();
-}
-
-function voltar() {
-    index -= cardsPorTela;
-    if (index < 0) index = cards.length - cardsPorTela;
-    atualizar();
-}
-
+// desliza o carrossel
 function atualizar() {
-    const cardWidth = cards[0].offsetWidth + 20;
-    carrossel.style.transform = `translateX(-${index * cardWidth}px)`;
+    const card = carrossel.querySelector(".card");
+    const cardWidth = card.offsetWidth;
+    const gap = parseInt(getComputedStyle(carrossel).gap) || 20;
+    const shift = (cardWidth + gap) * index;
+    carrossel.style.transform = `translateX(-${shift}px)`;
 }
 
+// avançar
+function avancar() {
+    const totalCards = carrossel.children.length;
+    const visibleCards = cardsPorTela();
+    index += visibleCards;
+    if (index >= totalCards) index = 0;
+    atualizar();
+}
+
+// voltar
+function voltar() {
+    const totalCards = carrossel.children.length;
+    const visibleCards = cardsPorTela();
+    index -= visibleCards;
+    if (index < 0) index = totalCards - visibleCards;
+    atualizar();
+}
+
+// automático
+let intervalo = setInterval(avancar, 4000);
+
+// atualiza no resize
 window.addEventListener("resize", () => {
-    cardsPorTela = calcularCards();
     atualizar();
 });
-
-setInterval(avancar, 4000);
