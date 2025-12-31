@@ -1,29 +1,108 @@
-.pedido {
-    background-color: #fff;
-    padding: 30px;
-    margin: 30px;
-    border-radius: 15px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
 }
 
-.pedido form {
+/* MENU */
+.menu {
+    background-color: #4b1e1e;
+    padding: 20px;
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* CAPA */
+.capa {
+    height: 80vh;
+    background: linear-gradient(
+        rgba(0,0,0,0.4),
+        rgba(0,0,0,0.4)
+    ),
+    url("https://via.placeholder.com/1200x600?text=Bombocado");
+    background-size: cover;
+    background-position: center;
     display: flex;
-    flex-direction: column;
-    gap: 15px;
-    max-width: 300px;
-    margin: auto;
+    align-items: center;
+    justify-content: center;
 }
 
-.pedido input,
-.pedido select,
-.pedido button {
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+.capa-texto {
+    color: white;
+    text-align: center;
 }
 
-.pedido button {
-    background-color: #d2691e;
+.capa-texto h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+/* CARROSSEL */
+.carrossel-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #fff5e6;
+}
+
+.carrossel {
+    position: relative;
+    max-width: 320px;
+    margin: 40px auto;
+    overflow: hidden;
+}
+
+.carrossel-container {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.card {
+    min-width: 320px;
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.card h3 {
+    margin: 15px 0 5px;
+    color: #4b1e1e;
+}
+
+.seta {
+    position: absolute;
+    top: 45%;
+    background-color: #4b1e1e;
     color: white;
     border: none;
+    font-size: 20px;
+    padding: 10px;
     cursor: pointer;
+    border-radius: 50%;
+}
+
+.esquerda {
+    left: -10px;
+}
+
+.direita {
+    right: -10px;
+}
+
+/* RODAPÉ */
+.rodape {
+    background-color: #4b1e1e;
+    color: white;
+    text-align: center;
+    padding: 20px;
 }
