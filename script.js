@@ -34,10 +34,6 @@ function voltar() {
     if (index < 0) index = totalCards - visibleCards;
     atualizar();
 }
-function fazerPedido(produto, preco) {
-    alert(`Você pediu: ${produto} - R$ ${preco.toFixed(2)}`);
-}
-
 
 // automático
 let intervalo = setInterval(avancar, 4000);
@@ -47,42 +43,21 @@ window.addEventListener("resize", () => {
     atualizar();
 });
 
-// Seleciona todos os botões "Pedir"
-const botoesPedir = document.querySelectorAll('.pedido-btn');
+// =======================
+// CARRINHO DE PEDIDOS
+// =======================
+let carrinho = [];
+let total = 0;
 
-botoesPedir.forEach(botao => {
-    botao.addEventListener('click', () => {
-        const card = botao.closest('.card');
-        const nomeProduto = card.querySelector('h3').innerText + " - " + card.querySelector('p').innerText;
-        
-        // Preenche o campo do formulário com o produto
-        document.getElementById('produto').value = nomeProduto;
+function adicionarPedido(produto, preco) {
+    carrinho.push({ produto, preco });
+    atualizarCarrinho();
+}
 
-        // Exibe a seção do formulário
-        document.getElementById('pedido-form-section').style.display = 'block';
+function atualizarCarrinho() {
+    const ul = document.getElementById('carrinho');
+    if(!ul) return; // evita erro se não estiver na página de pedido
+    ul.innerHTML = '';
+    total = 0;
 
-        // Rola para o formulário
-        document.getElementById('pedido-form-section').scrollIntoView({ behavior: 'smooth' });
-    });
-});
-
-// Envio do formulário
-document.getElementById('pedido-form').addEventListener('submit', function(e){
-    e.preventDefault();
-    
-    const produto = document.getElementById('produto').value;
-    const nome = document.getElementById('nome').value;
-    const telefone = document.getElementById('telefone').value;
-    const observacoes = document.getElementById('observacoes').value;
-
-    const mensagem = `Oi! Meu nome é ${nome}. Quero pedir: ${produto}. Observações: ${observacoes}`;
-    const whatsappURL = `https://wa.me/55${telefone}?text=${encodeURIComponent(mensagem)}`;
-
-    // Abre o WhatsApp
-    window.open(whatsappURL, '_blank');
-
-    // Opcional: resetar formulário
-    document.getElementById('pedido-form').reset();
-    document.getElementById('pedido-form-section').style.display = 'none';
-});
-
+    carrinho.forE
