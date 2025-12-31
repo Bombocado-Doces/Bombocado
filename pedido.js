@@ -1,36 +1,54 @@
-const botoesPedir = document.querySelectorAll('.pedido-btn');
+const botoes = document.querySelectorAll('.pedido-btn');
+const carrinho = document.getElementById('carrinho');
+const totalSpan = document.getElementById('total');
+const finalizarBtn = document.getElementById('finalizar-pedido');
 
-botoesPedir.forEach(botao => {
+let carrinhoArray = [];
+let total = 0;
+
+// Adicionar produto ao carrinho
+botoes.forEach(botao => {
     botao.addEventListener('click', () => {
         const card = botao.closest('.card');
-        const nomeProduto = card.querySelector('h3').innerText + " - " + card.querySelector('p').innerText;
-        const preco = card.querySelector('strong').innerText;
+        const produto = card.querySelector('h3').innerText + " - " + card.querySelector('p').innerText;
+        const preco = parseFloat(card.querySelector('strong').innerText);
 
-        // Preenche o campo do formulário
-        document.getElementById('produto').value = `${nomeProduto} - ${preco}`;
-
-        // Exibe o formulário
-        document.getElementById('pedido-form-section').style.display = 'block';
-
-        // Rola para o formulário
-        document.getElementById('pedido-form-section').scrollIntoView({ behavior: 'smooth' });
+        carrinhoArray.push({ produto, preco });
+        total += preco;
+        atualizarCarrinho();
     });
 });
 
-document.getElementById('pedido-form').addEventListener('submit', function(e){
-    e.preventDefault();
-    const produto = document.getElementById('produto').value;
-    const nome = document.getElementById('nome').value;
-    const telefone = document.getElementById('telefone').value;
-    const observacoes = document.getElementById('observacoes').value;
+function atualizarCarrinho() {
+    carrinho.innerHTML = '';
+    carrinhoArray.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.produto} - R$ ${item.preco.toFixed(2)}`;
+        carrinho.appendChild(li);
+    });
+    totalSpan.textContent = total.toFixed(2);
+}
 
-    const mensagem = `Oi! Meu nome é ${nome}. Quero pedir: ${produto}. Observações: ${observacoes}`;
-    const whatsappURL = `https://wa.me/5535984136112?text=${encodeURIComponent(mensagem)}`;
+// Finalizar pedido e enviar WhatsApp
+finalizarBtn.addEventListener('click', () => {
+    if (carrinhoArray.length === 0) {
+        alert("Adicione algum produto ao carrinho!");
+        return;
+    }
+
+    let mensagem = "Oi! Gostaria de fazer o pedido:\n";
+    carrinhoArray.forEach(item => {
+        mensagem += `- ${item.produto} - R$ ${item.preco.toFixed(2)}\n`;
+    });
+    mensagem += `Total: R$ ${total.toFixed(2)}`;
 
     // Abre WhatsApp com a mensagem pronta
-    window.open(whatsappURL, '_blank');
+    const telefone = "5535984136112";
+    const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+    window.open(url, '_blank');
 
-    // Reseta formulário e esconde
-    document.getElementById('pedido-form').reset();
-    document.getElementById('pedido-form-section').style.display = 'none';
+    // Limpa carrinho
+    carrinhoArray = [];
+    total = 0;
+    atualizarCarrinho();
 });
