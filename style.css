@@ -179,3 +179,31 @@ body > *:not(.rodape) {
     text-align: center;
     padding: 20px;
 }
+
+.pedido-form-section {
+    background-color: #fff5e6;
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 15px;
+    max-width: 500px;
+    margin: 40px auto;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.pedido-form-section h2 {
+    margin-bottom: 20px;
+    color: #4b1e1e;
+}
+
+.pedido-form-section input,
+.pedido-form-section textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+.pedido-form-section button {
+    margin-top: 10px;
+}
