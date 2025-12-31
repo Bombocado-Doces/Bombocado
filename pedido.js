@@ -45,6 +45,6 @@ btnFinalizar.addEventListener('click', () => {
     });
     mensagem += `Total: R$ ${total.toFixed(2)}`;
 
-    const whatsappURL = `https://wa.me/55${telefone}?text=${encodeURIComponent(mensagem)}`;
+    const whatsappURL = `https://wa.me/553584136112${telefone}?text=${encodeURIComponent(mensagem)}`;
     window.open(whatsappURL, '_blank');
 });
