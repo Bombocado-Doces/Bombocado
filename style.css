@@ -1,0 +1,29 @@
+.pedido {
+    background-color: #fff;
+    padding: 30px;
+    margin: 30px;
+    border-radius: 15px;
+}
+
+.pedido form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 300px;
+    margin: auto;
+}
+
+.pedido input,
+.pedido select,
+.pedido button {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.pedido button {
+    background-color: #d2691e;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
