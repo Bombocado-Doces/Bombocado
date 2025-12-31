@@ -68,26 +68,37 @@
     border-radius: 15px;
     padding: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    flex: 0 0 25%; /* 4 cards por vez no desktop */
+    flex: 0 0 23%; /* 4 cards por vez no desktop com espaçamento */
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     overflow: hidden; /* importante para cortar imagens */
+    max-width: 250px; /* limita largura */
+    margin: 0 auto;
 }
 
 .card img {
     width: 100%;
+    max-width: 220px; /* limita largura da imagem */
     aspect-ratio: 1 / 1; /* força quadrado */
     object-fit: cover;   /* corta excesso mantendo proporção */
     border-radius: 10px;
     display: block;
+    height: auto; /* ajusta altura automaticamente */
 }
 
-.card h3 {
-    margin-top: 10px;
-    color: #4b1e1e;
+/* RESPONSIVO */
+@media (max-width: 1200px) {
+    .card { flex: 0 0 32%; max-width: 200px; } /* 3 cards */
 }
+@media (max-width: 900px) {
+    .card { flex: 0 0 48%; max-width: 180px; } /* 2 cards */
+}
+@media (max-width: 600px) {
+    .card { flex: 0 0 90%; max-width: 250px; } /* 1 card */
+}
+
 
 /* SETAS */
 .seta {
@@ -111,9 +122,4 @@
     right: 10px;
 }
 
-/* RESPONSIVO */
-@media (max-width: 1200px) {
-    .card { flex: 0 0 33.33%; } /* 3 cards por vez */
-}
-@media (max-width: 900px) {
-    .card { flex: 0 0 50%; } /* 2 cards*
+
