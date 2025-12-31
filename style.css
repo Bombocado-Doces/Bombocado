@@ -68,37 +68,29 @@
     border-radius: 15px;
     padding: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    flex: 0 0 23%; /* 4 cards por vez no desktop com espaçamento */
+    flex: 0 0 23%; /* 4 cards por vez no desktop */
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    overflow: hidden; /* importante para cortar imagens */
-    max-width: 250px; /* limita largura */
+    overflow: hidden;
+    max-width: 250px; /* largura máxima do card */
     margin: 0 auto;
 }
 
 .card img {
     width: 100%;
-    max-width: 220px; /* limita largura da imagem */
+    max-width: 220px;
     aspect-ratio: 1 / 1; /* força quadrado */
     object-fit: cover;   /* corta excesso mantendo proporção */
     border-radius: 10px;
     display: block;
-    height: auto; /* ajusta altura automaticamente */
 }
 
-/* RESPONSIVO */
-@media (max-width: 1200px) {
-    .card { flex: 0 0 32%; max-width: 200px; } /* 3 cards */
+.card h3 {
+    margin-top: 10px;
+    color: #4b1e1e;
 }
-@media (max-width: 900px) {
-    .card { flex: 0 0 48%; max-width: 180px; } /* 2 cards */
-}
-@media (max-width: 600px) {
-    .card { flex: 0 0 90%; max-width: 250px; } /* 1 card */
-}
-
 
 /* SETAS */
 .seta {
@@ -122,4 +114,31 @@
     right: 10px;
 }
 
+/* RESPONSIVO */
+@media (max-width: 1200px) {
+    .card { flex: 0 0 32%; max-width: 200px; } /* 3 cards */
+}
+@media (max-width: 900px) {
+    .card { flex: 0 0 48%; max-width: 180px; } /* 2 cards */
+}
+@media (max-width: 600px) {
+    .card { flex: 0 0 90%; max-width: 250px; } /* 1 card */
+}
 
+/* RODAPÉ */
+body, html {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+body > *:not(.rodape) {
+    flex: 1;
+}
+
+.rodape {
+    background-color: #4b1e1e;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
